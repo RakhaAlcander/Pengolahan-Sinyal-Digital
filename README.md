@@ -20,9 +20,9 @@ Suara keramaian di tengah kota (lalu lintas, klakson, kebisingan mesin) menggang
 7. **Penguatan amplitudo** — demonstrasi tambahan mengalikan amplitudo sinyal dengan gain factor.
 
 ## Hasil
-- [isi: perbandingan nilai SNR sebelum vs sesudah filter — angka aslinya]
-- [isi: insight dari FFT comparison plot, mis. frekuensi mana yang berhasil diredam]
-- [isi: insight dari spektrogram]
+- Nilai SNR (mean/std) yang dihitung sangat mendekati nol pada ketiga tahap (asli: -0.000186, band pass: 0.0000000878, band pass + low pass: 0.000144). Karena sinyal audio pada dasarnya zero-mean, metrik SNR sederhana ini kurang representatif untuk menunjukkan peningkatan kualitas secara kuantitatif — perbandingan kualitas lebih terlihat jelas lewat FFT dan spektrogram di bawah.
+- Pada FFT comparison, energi frekuensi di luar rentang 500–2000 Hz (hasil cutoff band pass filter) tampak berkurang signifikan dibanding sinyal asli, menunjukkan filter berhasil membuang komponen frekuensi rendah dan tinggi yang mewakili kebisingan (mis. dengungan mesin frekuensi rendah, desis frekuensi tinggi). Setelah ditambah low pass filter (cutoff 8000 Hz), komponen frekuensi tinggi tersisa semakin terpangkas.
+- Spektrogram audio asli menunjukkan energi tersebar di hampir seluruh rentang frekuensi sepanjang waktu (indikasi noise broadband). Setelah band pass, energi lebih terkonsentrasi di pita 500–2000 Hz. Setelah ditambah low pass, komponen frekuensi tinggi di atas 8000 Hz semakin meredup, menyisakan pita frekuensi yang lebih fokus pada rentang suara yang diinginkan.
 
 ## Visualisasi
 ![FFT Comparison](images/fft_comparison.png)
